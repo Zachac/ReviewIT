@@ -52,6 +52,7 @@ public class Conference implements Serializable{
         mySubprogramRole = new SubprogramUtilities(myInfo);
         myDirectorRole = new DirectorUtilities(myInfo);
         myReviewerRole = new ReviewerUtilities(myInfo);
+        
     }
     
     /**
@@ -110,7 +111,11 @@ public class Conference implements Serializable{
     public DirectorUtilities getDirectorRole(){
     	return myDirectorRole;
     }
-
+    /**
+     * @return the myProgramChair
+     *
+    public
+    */ 
     /**
      * @return the myReviewerRole
      */

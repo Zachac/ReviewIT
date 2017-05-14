@@ -63,7 +63,8 @@ public class SubprogramUtilities {
     }
     
     /**
-     * Submits a recommendation for thePaper.
+     * Submits a recommendation for thePaper to the Program Chair.
+     * Is this even required? I think the Gui can handle it since it's a boolean.
      * @param theReviewerProfile the user submitting the recommendation
      * @param thePaper the paper to recommend for.
      * @throws IllegalOperationException if there aren't three reviews on the paper yet.
@@ -72,9 +73,19 @@ public class SubprogramUtilities {
             final UserProfile theSubProgramProfile,
             Paper thePaper
             ) throws IllegalOperationException {
-   
     	
     	//A manuscript recommendation cannot be submitted unless there exists a minimum of three reviews for this manuscript.
-        
+        //For the buisness rule we can either leave this option blank in the gui, or allow it to not be submittable.
+    	
+    	//The gui will set if its recommended or not. This submits the reasoning of the recommendation.
+    	if(thePaper.getReviewCount() >= 3) {
+    		//Is the reason going to be in a string or a file?
+    		
+    	} else {
+    		System.out.println("There is currently not enough reviews to submit a recommendation!");
+    		
+    	}
+    	
+    	
     }
 }

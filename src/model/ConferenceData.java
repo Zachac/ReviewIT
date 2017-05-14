@@ -13,7 +13,7 @@ import java.util.Map.Entry;
  * Implements ConferenceInfo which allows this ConferenceData to serve as a public interface
  * which client code can interact with.
  * Allows protected level access of internal data structures for modification purposes.
- * @author Dimitar Kumanov
+ * @author Dimitar Kumanov, Kevin Nguyen
  * @version 5/2/2017
  */
 public class ConferenceData implements ConferenceInfo, Serializable{
@@ -29,6 +29,10 @@ public class ConferenceData implements ConferenceInfo, Serializable{
      * Maps a UserProfile to a Paper.
      */
     private final Map<UserProfile, List<Paper>> myPaperSubmissionMap;
+    /**
+     * Maps a Subprogram chair to a recommendation manuscript.
+     */
+    //private final Map<UserProfile, List<>> myRecommendationMap;
     /**
      * Maps an Author/Coauthor's name to a Paper.
      */

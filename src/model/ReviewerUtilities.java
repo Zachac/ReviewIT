@@ -21,6 +21,9 @@ public class ReviewerUtilities {
             String review
             ) throws IllegalOperationException {
         //TODO
+    	
+    	//The amount of reviews increases once this method is called.
+    	thePaper.setReviewCount(thePaper.getReviewCount()+1);
     }
     
 }

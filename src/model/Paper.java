@@ -22,8 +22,11 @@ public class Paper implements Serializable{
 	private final File myPaperFile;
 	private Date mySubmissionDate;
 	private final List<String> myAuthors;
+	private final List<RecommendationPapers> myRecommendations;
 	private final String myTitle;
 	private final UserProfile mySubmitter;
+	//private boolean myRecommendation;
+	private int myAmountOfReviews;
 	
 	/**
 	 * Private; see createPaper()
@@ -31,14 +34,18 @@ public class Paper implements Serializable{
 	private Paper(
 			final File thePaper,
 			final Date theSubmissionDate,
+			final int theAmountOfReviews,
 			final List<String> theAuthors,
+			final List<RecommendationPapers> theRecommendation,
 			final String thePaperTitle,
 			final UserProfile theSubmitterUserProfile
 			) throws IllegalArgumentException{
 		
 		myPaperFile = Objects.requireNonNull(thePaper);
 		mySubmissionDate = Objects.requireNonNull(theSubmissionDate);
+		myRecommendations = Objects.requireNonNull(theRecommendation);
 		myAuthors = Objects.requireNonNull(theAuthors);
+		myAmountOfReviews = Objects.requireNonNull(theAmountOfReviews);
 		myTitle = Objects.requireNonNull(thePaperTitle);
 		mySubmitter = Objects.requireNonNull(theSubmitterUserProfile);
 		if(thePaperTitle.isEmpty())
@@ -60,13 +67,18 @@ public class Paper implements Serializable{
 			final File thePaperFile,
 			final List<String> theAuthors,
 			final String thePaperTitle,
+			final List<RecommendationPapers> theRecommendations,
+			//final boolean theRecommendation,
+			final int theAmountOfReviews,
 			final UserProfile theSubmitterUserProfile
 			) throws IllegalArgumentException{
 
 		return new Paper(
 				thePaperFile,
 				new Date(),
-				theAuthors,
+				theAmountOfReviews,
+				theAuthors, 
+				theRecommendations,
 				thePaperTitle,
 				theSubmitterUserProfile
 				);
@@ -118,6 +130,30 @@ public class Paper implements Serializable{
 	 */
 	public void setSubmissionDate(final Date newSubDate) {
 		mySubmissionDate = newSubDate;
+	}
+	/**
+	 * Checks if the paper is recommended for the subprogram chair.
+	 * Added this in to associate the recommendation by paper. Subject to change.
+	 * @param theRecommendation The boolean variable that the subprogram chair either recommends or doesn't.
+	 *
+	public void setRecommendation(boolean theRecommendation) {
+		myRecommendation = theRecommendation; 
+	}*/
+	/**
+	 * Gets the amount of reviews this manuscript has. 
+	 * Added it in the paper class for now to help with subprogram chair utilities.
+	 * Might possibly be done with a hashmap (keys with paper) did it this way for now.
+	 * @return The amount of reviews this paper has.
+	 */
+	public int getReviewCount() {
+		return myAmountOfReviews;
+	}
+	/**
+	 * Sets the amount of reviews the paper has.
+	 * @param theAmountOfReviews theReviewCount to change how much reviews the manuscript has.
+	 */
+	public void setReviewCount(int theAmountOfReviews) {
+		myAmountOfReviews = theAmountOfReviews;
 	}
 }
 
